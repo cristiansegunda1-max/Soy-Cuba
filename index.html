@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Isla en Llamas</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Isla en Llamas</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="game-container">
-    <h1>Isla en Llamas</h1>
-    <p id="story">
-      Año 1956. La isla está bajo una dictadura. 
-      ¿Qué deseas hacer?
-    </p>
+<div class="container">
 
-    <div class="choices">
-      <button onclick="choice1()">Organizar movimiento secreto</button>
-      <button onclick="choice2()">Buscar apoyo internacional</button>
-    </div>
-
-    <div class="stats">
-      <p>Apoyo Popular: <span id="popular">50</span></p>
-      <p>Recursos: <span id="resources">50</span></p>
-    </div>
+  <div class="stats">
+    <h2>Pedro Ruz</h2>
+    <p>Turno: <span id="turno"></span></p>
+    <p>Apoyo Popular: <span id="popular"></span></p>
+    <p>Fuerza Militar: <span id="militar"></span></p>
+    <p>Recursos: <span id="recursos"></span></p>
+    <p>Moral: <span id="moral"></span></p>
+    <p>Control Territorial: <span id="territorio"></span>%</p>
   </div>
+
+  <div class="event">
+    <h3 id="tituloEvento"></h3>
+    <p id="descripcionEvento"></p>
+    <div id="opciones"></div>
+  </div>
+
+</div>
 
 <script src="script.js"></script>
 </body>
