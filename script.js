@@ -16,31 +16,68 @@ function actualizarUI() {
   document.getElementById("territorio").textContent = game.controlTerritorial;
 }
 
+function resolverCombate(tipo) {
+
+  let poderJugador = game.fuerzaMilitar + game.moral;
+  let poderEnemigo = 40 + (Math.random() * 20);
+
+  if(tipo === "emboscada"){
+    poderJugador += 15;
+  }
+
+  if(tipo === "ataque"){
+    poderJugador += 5;
+    poderEnemigo += 10;
+  }
+
+  if(tipo === "sabotaje"){
+    poderJugador += 10;
+  }
+
+  if(tipo === "retirada"){
+    game.moral -= 5;
+    return "Retirada sin combate.";
+  }
+
+  let resultado = poderJugador > poderEnemigo ? "victoria" : "derrota";
+
+  if(resultado === "victoria"){
+    game.controlTerritorial += 3;
+    game.moral += 5;
+    game.recursos += 5;
+  } else {
+    game.fuerzaMilitar -= 5;
+    game.moral -= 10;
+    game.apoyoPopular -= 5;
+  }
+
+  return resultado;
+}
+
 function nuevoEvento() {
 
-  let eventos = [
-    {
-      titulo: "Campesinos ofrecen refugio",
-      descripcion: "Un grupo campesino quiere ayudarte.",
-      opciones: [
-        {
-          texto: "Aceptar ayuda",
-          efecto: () => {
-            game.apoyoPopular += 5;
-            game.recursos += 5;
-          }
-        },
-        {
-          texto: "Desconfiar",
-          efecto: () => {
-            game.moral -= 5;
-          }
-        }
-      ]
-    }
-  ];
-
-  let evento = eventos[Math.floor(Math.random() * eventos.length)];
+  let evento = {
+    titulo: "Convoy militar detectado",
+    descripcion: "Un convoy enemigo transporta armas.",
+    opciones: [
+      {
+        texto: "Emboscada rápida",
+        tipo: "emboscada"
+      },
+      {
+        texto: "Ataque frontal",
+        tipo: "ataque"
+      },
+      {
+        texto: "Sabotaje nocturno",
+        tipo: "sabotaje"
+      },
+      {
+        texto: "Retirada estratégica",
+        tipo: "retirada"
+      }
+    ]
+  };
 
   document.getElementById("tituloEvento").textContent = evento.titulo;
   document.getElementById("descripcionEvento").textContent = evento.descripcion;
@@ -52,10 +89,10 @@ function nuevoEvento() {
     let btn = document.createElement("button");
     btn.textContent = op.texto;
     btn.onclick = () => {
-      op.efecto();
+      let r = resolverCombate(op.tipo);
+      alert("Resultado: " + r);
       game.turno++;
       actualizarUI();
-      nuevoEvento();
     };
     opcionesDiv.appendChild(btn);
   });
