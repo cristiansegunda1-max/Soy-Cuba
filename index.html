@@ -7,26 +7,24 @@
 </head>
 <body>
 
-<div class="container">
+  <!-- PANTALLA DE INICIO -->
+  <div id="menuPrincipal" class="pantalla">
+    <h1 class="titulo">REVOLUCIÓN</h1>
 
-  <div class="stats">
-    <h2>Pedro Ruz</h2>
-    <p>Turno: <span id="turno"></span></p>
-    <p>Apoyo Popular: <span id="popular"></span></p>
-    <p>Fuerza Militar: <span id="militar"></span></p>
-    <p>Recursos: <span id="recursos"></span></p>
-    <p>Moral: <span id="moral"></span></p>
-    <p>Control Territorial: <span id="territorio"></span>%</p>
+    <button onclick="nuevaPartida()">Partida Nueva</button>
+    <button onclick="continuarPartida()">Continuar</button>
   </div>
 
-  <div class="event">
-    <h3 id="tituloEvento"></h3>
-    <p id="descripcionEvento"></p>
-    <div id="opciones"></div>
+  <!-- PANTALLA DEL JUEGO -->
+  <div id="pantallaJuego" class="pantalla oculto">
+    <div id="contenidoJuego">
+      <h2 id="eventoTitulo"></h2>
+      <p id="eventoDescripcion"></p>
+      <div id="opciones"></div>
+    </div>
   </div>
 
-</div>
+  <script src="game.js"></script>
 
-<script src="script.js"></script>
 </body>
 </html>
