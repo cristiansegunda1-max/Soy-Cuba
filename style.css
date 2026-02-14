@@ -1,0 +1,23 @@
+body {
+  background: #111;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+}
+
+.game-container {
+  margin-top: 50px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  background: crimson;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: darkred;
+}
